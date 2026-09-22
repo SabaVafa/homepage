@@ -1,0 +1,28 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*~
+
+# Build / cache
+node_modules/
+dist/
+.cache/
+
+# Claude Code tooling state
+.claude/
+
+# Black Friday variant — local only, never publish to GitHub
+black-friday.html
+black-friday.css
+BlackFriday/
+
+.claude/
+PROJECT_NOTES.md
+PROJECT-NOTES.md
+*-spec.md
