@@ -924,7 +924,12 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
     gap: var(--sp-6);
     overflow-x: auto;
     overflow-y: hidden;
-    scroll-snap-type: x mandatory;
+    /* proximity, not mandatory: the last badges' snap points sit past the max
+       scroll (7 fixed-width items + gutters don't divide evenly), so mandatory
+       snapping had no reachable target near the end — it fought the arrow
+       scrolls and left the strip stuck with trailing empty space. proximity
+       lets the rail rest anywhere and only nudges when already close. */
+    scroll-snap-type: x proximity;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     padding-bottom: var(--sp-2);
