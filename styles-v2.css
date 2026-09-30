@@ -924,12 +924,12 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
     gap: var(--sp-6);
     overflow-x: auto;
     overflow-y: hidden;
-    /* proximity, not mandatory: the last badges' snap points sit past the max
-       scroll (7 fixed-width items + gutters don't divide evenly), so mandatory
-       snapping had no reachable target near the end — it fought the arrow
-       scrolls and left the strip stuck with trailing empty space. proximity
-       lets the rail rest anywhere and only nudges when already close. */
-    scroll-snap-type: x proximity;
+    /* No scroll-snap here on purpose. With `scroll-snap-align: start` on the
+       last badge, iOS Safari reserves extra scroll width so that badge can be
+       aligned to the start — which shows up as empty space past the last badge
+       at the end of the strip. The arrow buttons already handle navigation, so
+       the strip just free-scrolls; no snapping, no phantom trailing space. */
+    scroll-snap-type: none;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     padding-bottom: var(--sp-2);
@@ -940,12 +940,8 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
   .trustbar__rail::before { display: none; }
   .trustbar__item {
     flex: 0 0 clamp(150px, 30%, 160px);
-    scroll-snap-align: start;
   }
   .trustbar__sub { white-space: normal; }
-}
-@media (min-width: 768px) and (max-width: 1279px) {
-  .trustbar__rail { scroll-padding-inline: clamp(var(--sp-6), 4vw, 56px); }
 }
 /* Flip interaction */
 .trustbar__item:hover,
